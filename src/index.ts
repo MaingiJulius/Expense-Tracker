@@ -34,7 +34,13 @@ if (cluster.isMaster) {
     app.use(express.json());
 
     app.get('/', (req, res) => {
-        return res.send('Hello World!');
+        return res.send({
+            message:"Expense Tracker System is Running",
+            api:"Expense Tracker",
+            environment:process.env.NODE_ENV ||
+                'development',
+            timestamp:new Date()
+        });
     })
 
     const setupServer = async () => {
