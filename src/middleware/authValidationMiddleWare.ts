@@ -33,11 +33,11 @@ export function validateAccountCreation():ValidationChain[] {
             .withMessage("Invalid Email Address")
             .normalizeEmail(),
 
-
         body("firstName")
         .isLength({min:3,max:20})
         .withMessage("First Name is required.")
-         .matches(/^[a-zA-Z]+$/),
+        .matches(/^[a-zA-Z]+$/)
+        .withMessage("First Name must contain only alphabetic characters"),
 
         body("lastName")
             .isLength({min:3,max:20})
